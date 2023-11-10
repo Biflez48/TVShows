@@ -5,10 +5,120 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:TVshows.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="ChannelPage">
+      d:DesignHeight="520" d:DesignWidth="659"
+      Title="ChannelPage" Background="#3A5154">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="409*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="250" MinWidth="250"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="23*"/>
+            <RowDefinition Height="77*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Grid.ColumnSpan="3">
+        <StackPanel>
+            <Button x:Name="ShowScheduleButton"
+                    Content="Вывести расписание"
+                    Height="32"
+                    Width="195"
+                    Background="#929AA2"
+                    FontSize="16"
+                    Margin="20 18"
+                    FontFamily="Inter"
+                    FontWeight="Bold"
+                    Click="ShowScheduleButton_Click"/>
+            <Button x:Name="ShowCategoriesButton"
+                    Content="Вывести категории"
+                    Height="32"
+                    Width="195"
+                    Background="#929AA2"
+                    FontSize="16"
+                    Margin="20 0"
+                    FontFamily="Inter"
+                    FontWeight="Bold"
+                    Click="ShowScheduleButton_Click"/>
+        </StackPanel>
+        <StackPanel Margin="10 0 20 0">
+            <DockPanel Margin="0 18" HorizontalAlignment="Center">
+
+                <Button 
+                    Content="Добавить"
+                    Height="32"
+                    Width="110"
+                    Background="#929AA2"
+                    FontSize="16"
+                    FontFamily="Inter"
+                    DockPanel.Dock="Left"
+                    FontWeight="Bold"/>
+                <Button 
+                    Content="Изменить"
+                    Height="32"
+                    Width="110"
+                    Background="#929AA2"
+                    FontSize="16"
+                    Margin="34 0"
+                    FontFamily="Inter"
+                    HorizontalAlignment="Center"
+                    FontWeight="Bold"/>
+                <Button 
+                    Content="Удалить"
+                    Height="32"
+                    Width="110"
+                    Background="#929AA2"
+                    FontSize="16"
+                    FontFamily="Inter"
+                    DockPanel.Dock="Right"
+                    FontWeight="Bold"/>
+                
+            </DockPanel>
+            <DockPanel>
+                
+                <Button 
+                    Content="Изменить расписание"
+                    Height="32"
+                    Width="190"
+                    Background="#929AA2"
+                    FontSize="16"
+                    FontFamily="Inter"
+                    HorizontalAlignment="Left"
+                    FontWeight="Bold"/>
+                <Button 
+                    Content="Изменипть шаблон"
+                    Height="32"
+                    Width="190"
+                    Background="#929AA2"
+                    FontSize="16"
+                    FontFamily="Inter"
+                    HorizontalAlignment="Right"
+                    FontWeight="Bold"/>
+                
+            </DockPanel>
+        </StackPanel>
+            </StackPanel>
+        <StackPanel x:Name="ChannelsStackPanel"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Grid.Row="1"
+                    Background="#B9B0B2">
+            
+        </StackPanel>
+        <GridSplitter x:Name="DialogGridSplitter"
+                      Grid.Column="1"
+                      Grid.Row="1"
+                      HorizontalAlignment="Center"
+                      Width="3"
+                      Visibility="Hidden"/>
+        <ScrollViewer x:Name="DialogScrollViewer"
+                      Grid.Column="2"
+                      Grid.Row="1" Visibility="Hidden">
+            <Frame x:Name="DialogFrame"/>
+        </ScrollViewer>
     </Grid>
+    
 </Page>

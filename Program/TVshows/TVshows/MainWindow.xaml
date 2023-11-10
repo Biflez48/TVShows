@@ -91,5 +91,9 @@
                    DockPanel.Dock="Bottom"/>
             <Label DockPanel.Dock="Top"/>
         </DockPanel>
+        <Frame x:Name="RootFrame"
+               Grid.Column="2"
+               NavigationUIVisibility="Hidden"
+               LoadCompleted="RootFrame_LoadCompleted"/>
     </Grid>
 </Window>

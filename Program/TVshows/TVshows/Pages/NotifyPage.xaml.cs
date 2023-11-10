@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace TVshows.Pages
 {
     /// <summary>
-    /// Interaction logic for ChannelPage.xaml
+    /// Interaction logic for NotifyPage.xaml
     /// </summary>
-    public partial class ChannelPage : Page
+    public partial class NotifyPage : Page
     {
-        public ChannelPage()
+        public NotifyPage()
         {
             InitializeComponent();
-        }
-
-        private void ShowScheduleButton_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

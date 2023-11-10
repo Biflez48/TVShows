@@ -26,24 +26,34 @@ namespace TVshows
             UserNameMainWndLabel.Content = UserName;
         }
 
+        private void ShowPage(Type PageType)
+        {
+            if(PageType!= null)
+            {
+                Page Page;
+                Page = (Page)Activator.CreateInstance(PageType);
+                RootFrame.Navigate(Page);
+            }
+        }
+
         private void ChannelBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            ShowPage(typeof(Pages.ChannelPage));
         }
 
         private void ShowsBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            ShowPage(typeof(Pages.ShowsPage));
         }
 
         private void CategoriesBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            ShowPage(typeof(Pages.CategoriesPage));
         }
 
         private void NotifyBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            ShowPage(typeof(Pages.NotifyPage));
         }
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
@@ -51,6 +61,11 @@ namespace TVshows
             LoginWindow LogWnd = new LoginWindow();
             LogWnd.Show();
             Close();
+        }
+
+        private void RootFrame_LoadCompleted(object sender, NavigationEventArgs e)
+        {
+
         }
     }
 }
