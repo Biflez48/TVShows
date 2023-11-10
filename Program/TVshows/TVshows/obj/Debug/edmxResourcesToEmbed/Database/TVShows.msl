@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TVshowsModelStoreContainer" CdmEntityContainer="TVshowsEntities">
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="TVshowsModel.Categories">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="idCat" ColumnName="idCat" />
+          <ScalarProperty Name="NameCat" ColumnName="NameCat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Channels">
+      <EntityTypeMapping TypeName="TVshowsModel.Channels">
+        <MappingFragment StoreEntitySet="Channels">
+          <ScalarProperty Name="idCh" ColumnName="idCh" />
+          <ScalarProperty Name="NameCh" ColumnName="NameCh" />
+          <ScalarProperty Name="DescriptionCh" ColumnName="DescriptionCh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Favorites">
+      <EntityTypeMapping TypeName="TVshowsModel.Favorites">
+        <MappingFragment StoreEntitySet="Favorites">
+          <ScalarProperty Name="idFav" ColumnName="idFav" />
+          <ScalarProperty Name="idUs" ColumnName="idUs" />
+          <ScalarProperty Name="idCat" ColumnName="idCat" />
+          <ScalarProperty Name="idSh" ColumnName="idSh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="TVshowsModel.Roles">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
+          <ScalarProperty Name="NameRol" ColumnName="NameRol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Shows">
+      <EntityTypeMapping TypeName="TVshowsModel.Shows">
+        <MappingFragment StoreEntitySet="Shows">
+          <ScalarProperty Name="idSh" ColumnName="idSh" />
+          <ScalarProperty Name="NameSh" ColumnName="NameSh" />
+          <ScalarProperty Name="tDurationSh" ColumnName="tDurationSh" />
+          <ScalarProperty Name="DescrioptionSh" ColumnName="DescrioptionSh" />
+          <ScalarProperty Name="idCat" ColumnName="idCat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stencil">
+      <EntityTypeMapping TypeName="TVshowsModel.Stencil">
+        <MappingFragment StoreEntitySet="Stencil">
+          <ScalarProperty Name="idSt" ColumnName="idSt" />
+          <ScalarProperty Name="idCh" ColumnName="idCh" />
+          <ScalarProperty Name="idCat" ColumnName="idCat" />
+          <ScalarProperty Name="dtStart" ColumnName="dtStart" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="TVshowsModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Television">
+      <EntityTypeMapping TypeName="TVshowsModel.Television">
+        <MappingFragment StoreEntitySet="Television">
+          <ScalarProperty Name="idTv" ColumnName="idTv" />
+          <ScalarProperty Name="idSh" ColumnName="idSh" />
+          <ScalarProperty Name="idSt" ColumnName="idSt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="TVshowsModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="idUs" ColumnName="idUs" />
+          <ScalarProperty Name="NameUs" ColumnName="NameUs" />
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
+          <ScalarProperty Name="PasswordUs" ColumnName="PasswordUs" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="TVshowsModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="TVshowsModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="TVshowsModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="TVshowsModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TVshowsModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="TVshowsModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TVshowsModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="TVshowsModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="TVshowsModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>
