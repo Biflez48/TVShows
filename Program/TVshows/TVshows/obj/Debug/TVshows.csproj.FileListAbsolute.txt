@@ -49,3 +49,4 @@ C:\Users\AlexBook\Downloads\TVshows-20231020T114954Z-001\TVshows\TVshows\obj\Deb
 C:\Users\AlexBook\Downloads\TVshows-20231020T114954Z-001\TVshows\TVshows\obj\Debug\TVshows.csproj.CopyComplete
 C:\Users\AlexBook\Downloads\TVshows-20231020T114954Z-001\TVshows\TVshows\obj\Debug\TVshows.exe
 C:\Users\AlexBook\Downloads\TVshows-20231020T114954Z-001\TVshows\TVshows\obj\Debug\TVshows.pdb
+C:\Users\AlexBook\Downloads\TVshows-20231020T114954Z-001\TVshows\TVshows\obj\Debug\App.baml

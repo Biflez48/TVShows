@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TVshows"
         mc:Ignorable="d"
-        Title="RegistrationWindow" Height="500" Width="280">
+        Title="RegistrationWindow" Height="500" Width="280" WindowStartupLocation="CenterScreen">
     <Grid>
         <DockPanel Background="#B9B0B2">
 
@@ -75,7 +75,14 @@
                                  IsEnabled="False"
                                  Width="110"
                                  TabIndex="0"
-                                 Height="33"/>
+                                 Height="33"
+                                 FontSize="26"
+                                 Foreground="Red"
+                                 FontStretch="UltraCondensed"
+                                 FontStyle="Italic" 
+                                 TextDecorations="Strikethrough"
+                                 FontWeight="Heavy"
+                                 />
                         <TextBox x:Name="CaptchRegTextBox"
                                  DockPanel.Dock="Right"
                                  Width="110"

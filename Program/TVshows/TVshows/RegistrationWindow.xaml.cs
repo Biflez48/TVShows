@@ -60,6 +60,8 @@ namespace TVshows
 
         private void CancelRegBtn_Click(object sender, RoutedEventArgs e)
         {
+            LoginWindow logWnd = new LoginWindow();
+            logWnd.Show();
             Close();
         }
 
@@ -130,7 +132,9 @@ namespace TVshows
                     MessageBoxResult.OK);
                 LoginRegTextBox.Focus();
             }
-            int cntUsers = Core.Database.Users.Where(U => U.NameUs == LoginRegTextBox.Text).Count();
+            int cntUsers = Core.Database.Users
+                .Where(U => U.NameUs == LoginRegTextBox.Text)
+                .Count();
             if (cntUsers > 0)
             {
                 MessageBox.Show("Такой пользователь уже есть",

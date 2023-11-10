@@ -27,7 +27,11 @@ namespace TVshows
 
         private void OkLogBtn_Click(object sender, RoutedEventArgs e)
         {
-            ObservableCollection<Database.Users> User = new ObservableCollection<Database.Users>(Core.Database.Users.Where(U => U.NameUs == LoginLogTextBox.Text && U.PasswordUs== PasswordLogTextBox.Text));
+            ObservableCollection<Database.Users> User = 
+                new ObservableCollection<Database.Users>(
+                    Core.Database.Users
+                    .Where(U => U.NameUs == LoginLogTextBox.Text 
+                        && U.PasswordUs == PasswordLogTextBox.Text));
 
             if (User.Count()>0)
             {
