@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="520" d:DesignWidth="659"
       Title="ChannelPage" Background="#3A5154">
-
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="409*"/>
@@ -106,6 +106,45 @@
                     Grid.ColumnSpan="3"
                     Grid.Row="1"
                     Background="#B9B0B2">
+
+            <ListBox x:Name="ChnlsListBox"
+                     SelectionChanged="ChnlsListBox_SelectionChanged"
+                     Background="#B9B0B2"
+                     Margin="20 5"
+                     ItemsSource="{Binding ChannelsTiles}">
+
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="1"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border CornerRadius="5"
+                                BorderBrush="#3A5154"
+                                BorderThickness="2"
+                                Margin="0 5">
+                            
+                            <DockPanel Background="#929AA2"
+                                       MaxWidth="300">
+                                <TextBlock DockPanel.Dock="Left"
+                                           Text="{Binding NameCh}"
+                                           FontWeight="Bold"
+                                           HorizontalAlignment="Center"
+                                           Margin="10"/>
+                                <TextBlock DockPanel.Dock="Right"
+                                           Text="{Binding DescCh}"
+                                           TextWrapping="Wrap"
+                                           HorizontalAlignment="Center"
+                                           Margin="10"/>
+                            </DockPanel>
+                            
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                
+            </ListBox>
             
         </StackPanel>
         <GridSplitter x:Name="DialogGridSplitter"
