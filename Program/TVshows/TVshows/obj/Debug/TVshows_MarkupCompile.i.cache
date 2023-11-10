@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\4ИС3\Verbitskiy\TVshows\TVshows\obj\Debug\
+D:\4is3\TVshows\TVshows\obj\Debug\
 TVshows
 none
 false
 DEBUG;TRACE
-D:\4ИС3\Verbitskiy\TVshows\TVshows\App.xaml
-3-556439904
+D:\4is3\TVshows\TVshows\App.xaml
+4780783755
 2-504015200
-231492235582
-18-1002183767
-LoginWindow.xaml;MainWindow.xaml;RegistrationWindow.xaml;
+24-1501695690
+1810319193
+LoginWindow.xaml;MainWindow.xaml;Pages\ChannelPage.xaml;RegistrationWindow.xaml;
 
-False
+True
 

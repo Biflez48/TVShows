@@ -32,6 +32,8 @@
                            FontSize="18"/>
                     <TextBox x:Name="LoginRegTextBox"
                              TabIndex="0"
+                                 FontSize="20"
+                                 FontStyle="Italic" 
                              Height="33"/>
                 </StackPanel>
 
@@ -41,6 +43,8 @@
                            FontSize="18"/>
                     <TextBox x:Name="PasswordRegTextBox"
                              TabIndex="0"
+                                 FontSize="20"
+                                 FontStyle="Italic" 
                              Height="33"/>
                 </StackPanel>
 
@@ -50,6 +54,8 @@
                            FontSize="18"/>
                     <TextBox x:Name="RepeatePasswordRegTextBox"
                              TabIndex="0"
+                                 FontSize="20"
+                                 FontStyle="Italic" 
                              Height="33"/>
                 </StackPanel>
 
@@ -76,16 +82,18 @@
                                  Width="110"
                                  TabIndex="0"
                                  Height="33"
-                                 FontSize="26"
+                                 FontSize="24"
                                  Foreground="Red"
                                  FontStretch="UltraCondensed"
                                  FontStyle="Italic" 
                                  TextDecorations="Strikethrough"
                                  FontWeight="Heavy"
                                  />
-                        <TextBox x:Name="CaptchRegTextBox"
+                        <TextBox x:Name="RepCaptchaRegTextBox"
                                  DockPanel.Dock="Right"
                                  Width="110"
+                                 FontSize="24"
+                                 FontStyle="Italic" 
                                  TabIndex="0"
                                  Height="33"/>
                         <Label></Label>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -29,15 +30,13 @@ namespace TVshows
 
         private void CreateCaptcha()
         {
-            String allowchar = " ";
-            allowchar = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z";
-            allowchar += "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,y,z";
+            string allowchar = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,";
+            allowchar += "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,y,z,";
             allowchar += "1,2,3,4,5,6,7,8,9,0";
             //разделитель
             char[] a = { ',' };
             //расщепление массива по разделителю
-            String[] ar = allowchar.Split(a);
-            String Captcha = "";
+            string[] ar = allowchar.Split(a);
             string temp = "";
             Random r = new Random();
             for (int i = 0; i < 6; i++)
@@ -92,14 +91,14 @@ namespace TVshows
 
         private bool CheckInfo()
         {
-            if (CaptchRegTextBox.Text != Captcha)
+            if (RepCaptchaRegTextBox.Text!=Captcha)
             {
                 MessageBox.Show("Неверная капча",
                     "Предупреждение",
                     MessageBoxButton.OK,
                     MessageBoxImage.Warning,
                     MessageBoxResult.OK);
-                CaptchRegTextBox.Focus();
+                RepCaptchaRegTextBox.Focus();
                 return false;
             }
             if(LoginRegTextBox.Text==""
@@ -122,6 +121,7 @@ namespace TVshows
                     MessageBoxImage.Warning,
                     MessageBoxResult.OK);
                 RepeatePasswordRegTextBox.Focus();
+                return false;
             }
             if(LoginRegTextBox.Text.Length<5 || PasswordRegTextBox.Text.Length < 5)
             {
@@ -131,6 +131,19 @@ namespace TVshows
                     MessageBoxImage.Warning,
                     MessageBoxResult.OK);
                 LoginRegTextBox.Focus();
+                return false;
+            }
+            Regex regex = new Regex(@"^([\d\D]*[-@№;:%()_,.!#\$%&'\*\+/=\?\^`\{\}\|~]+[\d\D]*)+([-@№;:%()_,.!#\$%&'\*\+/=\?\^`\{\}\|~\D]*\d+[-@№;:%()_,.!#\$%&'\*\+/=\?\^`\{\}\|~\D]*)+([\d-@№;:%()_,.!#\$%&'\*\+/=\?\^`\{\}\|~]*\D+[\d-@№;:%()_,.!#\$%&'\*\+/=\?\^`\{\}\|~]*)+");
+            MatchCollection matches = regex.Matches(PasswordRegTextBox.Text);
+            if (matches.Count<=0)
+            {
+                MessageBox.Show("Пароль должен содержать буквы, цифры и спец. символы",
+                    "Предупреждение",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning,
+                    MessageBoxResult.OK);
+                LoginRegTextBox.Focus();
+                return false;
             }
             int cntUsers = Core.Database.Users
                 .Where(U => U.NameUs == LoginRegTextBox.Text)
@@ -143,6 +156,7 @@ namespace TVshows
                     MessageBoxImage.Warning,
                     MessageBoxResult.OK);
                 LoginRegTextBox.Focus();
+                return false;
             }
             return true;
         }

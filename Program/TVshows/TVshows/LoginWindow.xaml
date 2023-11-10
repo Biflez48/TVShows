@@ -32,6 +32,8 @@
                            FontSize="18"/>
                     <TextBox x:Name="LoginLogTextBox"
                              TabIndex="0"
+                                 FontSize="20"
+                                 FontStyle="Italic" 
                              Height="33"/>
                 </StackPanel>
 
@@ -41,6 +43,8 @@
                            FontSize="18"/>
                     <TextBox x:Name="PasswordLogTextBox"
                              TabIndex="0"
+                                 FontSize="20"
+                                 FontStyle="Italic" 
                              Height="33"/>
                 </StackPanel>
 
