@@ -701,6 +701,27 @@
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
-    <Diagrams></Diagrams>
+    <Diagrams>
+      <Diagram DiagramId="12042079451e4e31b6a5222ecdc7509f" Name="Diagram1">
+        <EntityTypeShape EntityType="TVshowsModel.Categories" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TVshowsModel.Channels" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TVshowsModel.Favorites" Width="1.5" PointX="5.25" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TVshowsModel.Roles" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TVshowsModel.Shows" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TVshowsModel.Stencil" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TVshowsModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TVshowsModel.Television" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TVshowsModel.Users" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
+        <AssociationConnector Association="TVshowsModel.FK_Favorites_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="TVshowsModel.FK_Shows_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="TVshowsModel.FK_Stencil_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="TVshowsModel.FK_Stencil_Channels" ManuallyRouted="false" />
+        <AssociationConnector Association="TVshowsModel.FK_Favorites_Shows" ManuallyRouted="false" />
+        <AssociationConnector Association="TVshowsModel.FK_Favorites_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="TVshowsModel.FK_Users_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="TVshowsModel.FK_Television_Shows" ManuallyRouted="false" />
+        <AssociationConnector Association="TVshowsModel.FK_Television_Stencil" ManuallyRouted="false" />
+      </Diagram>
+    </Diagrams>
   </Designer>
 </edmx:Edmx>

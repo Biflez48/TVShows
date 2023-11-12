@@ -209,3 +209,7 @@ C:\Users\AlexBook\Downloads\TVshows-20231110T175149Z-001\TVshows\TVshows\obj\Deb
 C:\Users\AlexBook\Downloads\TVshows-20231110T175149Z-001\TVshows\TVshows\obj\Debug\TVshows.csproj.CopyComplete
 C:\Users\AlexBook\Downloads\TVshows-20231110T175149Z-001\TVshows\TVshows\obj\Debug\TVshows.exe
 C:\Users\AlexBook\Downloads\TVshows-20231110T175149Z-001\TVshows\TVshows\obj\Debug\TVshows.pdb
+C:\Users\AlexBook\Downloads\TVshows-20231110T175149Z-001\TVshows\TVshows\obj\Debug\Pages\SchedulePage.g.cs
+C:\Users\AlexBook\Downloads\TVshows-20231110T175149Z-001\TVshows\TVshows\obj\Debug\Pages\ShowsPageDls.g.cs
+C:\Users\AlexBook\Downloads\TVshows-20231110T175149Z-001\TVshows\TVshows\obj\Debug\Pages\SchedulePage.baml
+C:\Users\AlexBook\Downloads\TVshows-20231110T175149Z-001\TVshows\TVshows\obj\Debug\Pages\ShowsPageDls.baml
