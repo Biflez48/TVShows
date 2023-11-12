@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -21,45 +22,95 @@ namespace TVshows.Pages
     /// </summary>
     public partial class ChannelPage : Page
     {
-        ObservableCollection<TileItem> ChannelsTiles = new ObservableCollection<TileItem>();
+        private CollectionViewSource ChannelsViewModel { get; set; }
         public ChannelPage()
         {
             InitializeComponent();
-            ShowTiles();
+            ChannelsViewModel = new CollectionViewSource();
+            UpdateChannelTiles(null);
         }
 
-        private class TileItem
+        private void ShowDialog(Page Page)
         {
-            public string NameCh { get; set; }
-            public string DescCh { get; set; }
+            Grid.SetColumnSpan(ChannelsStackPanel, 1);
+            DialogGridSplitter.Visibility = Visibility.Visible;
+            DialogScrollViewer.Visibility = Visibility.Visible;
+            DialogFrame.Navigate(Page);
         }
 
-        private void ShowTiles()
+        public void HideDialog()
         {
-            ObservableCollection<Database.Channels> Channels =
-               new ObservableCollection<Database.Channels>(
-                   Core.Database.Channels
-                   .Where(C => C.NameCh!="" && C.DescriptionCh!=""));
-
-            for (int i = 0; i < Channels.Count(); i++)
+            Grid.SetColumnSpan(ChannelsStackPanel, 3);
+            DialogGridSplitter.Visibility = Visibility.Hidden;
+            DialogScrollViewer.Visibility = Visibility.Hidden;
+            DialogFrame.Navigate(null);
+            while (DialogFrame.CanGoBack)
             {
-                TileItem tile = new TileItem();
-                tile.NameCh = Channels[i].NameCh;
-                tile.DescCh = Channels[i].DescriptionCh;
-                ChannelsTiles.Add(tile);
+                DialogFrame.RemoveBackEntry();
             }
-
-            ChnlsListBox.ItemsSource = ChannelsTiles;
         }
 
-        private void ShowScheduleButton_Click(object sender, RoutedEventArgs e)
+        public void UpdateChannelTiles(Database.Channels Channel)
         {
+            if (Channel == null && ChnlsListBox.SelectedItem != null)
+            {
+                Channel = ChnlsListBox.SelectedItem as Database.Channels;
+            }
+            
+            ObservableCollection<Database.Channels> Channels =
+                new ObservableCollection<Database.Channels>(
+                    Core.Database.Channels
+                    .Where(C => C.idCh >= 0)
+                    );
 
+            ChannelsViewModel.Source = Channels;
+            ChnlsListBox.ItemsSource = ChannelsViewModel.View;
+            
+            if (Channels.Count > 0)
+            {
+                ChnlsListBox.SelectedItem = Channel;
+                if (ChnlsListBox.SelectedIndex < 0)
+                {
+                    ChnlsListBox.SelectedIndex = 0;
+                }
+            }
         }
 
-        private void ChnlsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ChnlsListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            Database.Channels SelItem = (Database.Channels)ChnlsListBox.SelectedItem;
+            (new MainWindow()).RootFrame.Navigate(new SchedulePage(SelItem.idCh));
+        }
 
+        private void AddChannelButton_Click(object sender, RoutedEventArgs e)
+        {
+            ShowDialog(new ChannelPageDlg(this));
+        }
+
+        private void DeleteChannelButton_Click(object sender, RoutedEventArgs e)
+        {
+            Database.Channels Channel = ChnlsListBox.SelectedItem as Database.Channels;
+            if (Channel != null)
+            {
+                try
+                {
+                    if (Channel.idCh == Core.VOID)
+                    {
+                        Core.Database.Channels.Remove(Channel);
+                    }
+                    Core.Database.SaveChanges();
+                    UpdateChannelTiles(null);
+                }
+                catch
+                {
+                    MessageBox.Show("Не удалось удалить канал из базы данных",
+                                    "Предупреждение",
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Information,
+                                    MessageBoxResult.None
+                                );
+                }
+            }
         }
     }
 }

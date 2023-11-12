@@ -26,7 +26,7 @@ namespace TVshows
             UserNameMainWndLabel.Content = UserName;
         }
 
-        private void ShowPage(Type PageType)
+        public void ShowPage(Type PageType)
         {
             if(PageType!= null)
             {

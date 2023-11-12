@@ -134,6 +134,9 @@
     <Compile Include="Pages\ShowsPage.xaml.cs">
       <DependentUpon>ShowsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ShowsPageDls.xaml.cs">
+      <DependentUpon>ShowsPageDls.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RegistrationWindow.xaml.cs">
       <DependentUpon>RegistrationWindow.xaml</DependentUpon>
     </Compile>
@@ -174,6 +177,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ShowsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ShowsPageDls.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

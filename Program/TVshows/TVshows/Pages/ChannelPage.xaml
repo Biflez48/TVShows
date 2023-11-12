@@ -32,10 +32,10 @@
                     </Border>
                     <StackPanel DockPanel.Dock="Right"
                                 Margin="5 0 0 0">
-                        <TextBlock Text="{Binding NameCh}"
+                        <Label Content="{Binding NameCh}"
                                    FontWeight="Bold"
                                    HorizontalAlignment="Left"/>
-                        <TextBlock Text="{Binding DescCh}"
+                        <TextBlock Text="{Binding DescriptionCh}"
                                    TextWrapping="Wrap"
                                    HorizontalAlignment="Left"
                                    Margin="0 5 0 0"/>
@@ -56,92 +56,36 @@
             <ColumnDefinition Width="250" MinWidth="250"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="23*"/>
-            <RowDefinition Height="77*"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="90*"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal"
-                    Grid.Column="0"
+        <DockPanel Grid.Column="0"
                     Grid.Row="0"
                     Grid.ColumnSpan="3">
-        <StackPanel>
-            <Button x:Name="ShowScheduleButton"
-                    Content="Вывести расписание"
+            <Button x:Name="DeleteChannelButton"
+                    Content="Удалить"
                     Height="32"
-                    Width="195"
-                    Background="#929AA2"
-                    FontSize="16"
-                    Margin="20 18"
-                    FontFamily="Inter"
-                    FontWeight="Bold"
-                    Click="ShowScheduleButton_Click"/>
-            <Button x:Name="ShowCategoriesButton"
-                    Content="Вывести категории"
-                    Height="32"
-                    Width="195"
+                    Width="110"
                     Background="#929AA2"
                     FontSize="16"
                     Margin="20 0"
                     FontFamily="Inter"
+                    DockPanel.Dock="Right"
                     FontWeight="Bold"
-                    Click="ShowScheduleButton_Click"/>
-        </StackPanel>
-        <StackPanel Margin="10 0 20 0">
-            <DockPanel Margin="0 18" HorizontalAlignment="Center">
-
-                <Button 
+                    Click="DeleteChannelButton_Click"/>
+            <Button x:Name="AddChannelButton"
                     Content="Добавить"
                     Height="32"
                     Width="110"
                     Background="#929AA2"
                     FontSize="16"
                     FontFamily="Inter"
-                    DockPanel.Dock="Left"
-                    FontWeight="Bold"/>
-                <Button 
-                    Content="Изменить"
-                    Height="32"
-                    Width="110"
-                    Background="#929AA2"
-                    FontSize="16"
-                    Margin="34 0"
-                    FontFamily="Inter"
-                    HorizontalAlignment="Center"
-                    FontWeight="Bold"/>
-                <Button 
-                    Content="Удалить"
-                    Height="32"
-                    Width="110"
-                    Background="#929AA2"
-                    FontSize="16"
-                    FontFamily="Inter"
                     DockPanel.Dock="Right"
-                    FontWeight="Bold"/>
-                
-            </DockPanel>
-            <DockPanel>
-                
-                <Button 
-                    Content="Изменить расписание"
-                    Height="32"
-                    Width="190"
-                    Background="#929AA2"
-                    FontSize="16"
-                    FontFamily="Inter"
-                    HorizontalAlignment="Left"
-                    FontWeight="Bold"/>
-                <Button 
-                    Content="Изменипть шаблон"
-                    Height="32"
-                    Width="190"
-                    Background="#929AA2"
-                    FontSize="16"
-                    FontFamily="Inter"
-                    HorizontalAlignment="Right"
-                    FontWeight="Bold"/>
-                
-            </DockPanel>
-        </StackPanel>
-            </StackPanel>
+                    FontWeight="Bold"
+                    Click="AddChannelButton_Click"/>
+            <Label DockPanel.Dock="Right"/>
+            
+        </DockPanel>
         <StackPanel x:Name="ChannelsStackPanel"
                     Grid.Column="0"
                     Grid.ColumnSpan="3"
@@ -149,50 +93,11 @@
                     Background="#B9B0B2">
 
             <ListBox x:Name="ChnlsListBox"
-                 ItemTemplate="{StaticResource listTemplate}"
-                 ItemsPanel="{StaticResource listPanelTemplate}"
-                 SelectionChanged="ChnlsListBox_SelectionChanged"
-                 ScrollViewer.HorizontalScrollBarVisibility="Disabled" /><!--
+                     ItemTemplate="{StaticResource listTemplate}"
+                     ItemsPanel="{StaticResource listPanelTemplate}"
+                     MouseDoubleClick="ChnlsListBox_MouseDoubleClick"
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled" />
 
-            <ListBox x:Name="ChnlsListBox"
-                     SelectionChanged="ChnlsListBox_SelectionChanged"
-                     Background="#B9B0B2"
-                     Margin="20 5"
-                     ItemsSource="{Binding ChannelsTiles}">
-
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <UniformGrid Columns="1"/>
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Border CornerRadius="5"
-                                BorderBrush="#3A5154"
-                                BorderThickness="2"
-                                Margin="0 5">
-                            
-                            <DockPanel Background="#929AA2"
-                                       MaxWidth="300">
-                                <TextBlock DockPanel.Dock="Left"
-                                           Text="{Binding NameCh}"
-                                           FontWeight="Bold"
-                                           HorizontalAlignment="Center"
-                                           Margin="10"/>
-                                <TextBlock DockPanel.Dock="Right"
-                                           Text="{Binding DescCh}"
-                                           TextWrapping="Wrap"
-                                           HorizontalAlignment="Center"
-                                           Margin="10"/>
-                            </DockPanel>
-                            
-                        </Border>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-                
-            </ListBox> -->
-            
         </StackPanel>
         <GridSplitter x:Name="DialogGridSplitter"
                       Grid.Column="1"
