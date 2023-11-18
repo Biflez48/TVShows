@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TVshowsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Categories">
+    <Key>
+      <PropertyRef Name="idCat" />
+    </Key>
+    <Property Name="idCat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameCat" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Channels">
+    <Key>
+      <PropertyRef Name="idCh" />
+    </Key>
+    <Property Name="idCh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameCh" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DescriptionCh" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Favorites">
+    <Key>
+      <PropertyRef Name="idFav" />
+    </Key>
+    <Property Name="idFav" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idUs" Type="int" Nullable="false" />
+    <Property Name="idCat" Type="int" Nullable="false" />
+    <Property Name="idSh" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="idRol" />
+    </Key>
+    <Property Name="idRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameRol" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Shows">
+    <Key>
+      <PropertyRef Name="idSh" />
+    </Key>
+    <Property Name="idSh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameSh" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="tDurationSh" Type="time" Precision="7" Nullable="false" />
+    <Property Name="DescrioptionSh" Type="nvarchar" MaxLength="100" />
+    <Property Name="idCat" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Stencil">
+    <Key>
+      <PropertyRef Name="idSt" />
+    </Key>
+    <Property Name="idSt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idCh" Type="int" Nullable="false" />
+    <Property Name="idCat" Type="int" Nullable="false" />
+    <Property Name="dtStart" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Television">
+    <Key>
+      <PropertyRef Name="idTv" />
+    </Key>
+    <Property Name="idTv" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idSh" Type="int" Nullable="false" />
+    <Property Name="idSt" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="idUs" />
+    </Key>
+    <Property Name="idUs" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NameUs" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="idRol" Type="int" Nullable="false" />
+    <Property Name="PasswordUs" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Favorites_Categories">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+    <End Role="Favorites" Type="Self.Favorites" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="idCat" />
+      </Principal>
+      <Dependent Role="Favorites">
+        <PropertyRef Name="idCat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Favorites_Shows">
+    <End Role="Shows" Type="Self.Shows" Multiplicity="1" />
+    <End Role="Favorites" Type="Self.Favorites" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shows">
+        <PropertyRef Name="idSh" />
+      </Principal>
+      <Dependent Role="Favorites">
+        <PropertyRef Name="idSh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Favorites_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Favorites" Type="Self.Favorites" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="idUs" />
+      </Principal>
+      <Dependent Role="Favorites">
+        <PropertyRef Name="idUs" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Shows_Categories">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+    <End Role="Shows" Type="Self.Shows" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="idCat" />
+      </Principal>
+      <Dependent Role="Shows">
+        <PropertyRef Name="idCat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Stencil_Categories">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+    <End Role="Stencil" Type="Self.Stencil" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="idCat" />
+      </Principal>
+      <Dependent Role="Stencil">
+        <PropertyRef Name="idCat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Stencil_Channels">
+    <End Role="Channels" Type="Self.Channels" Multiplicity="1" />
+    <End Role="Stencil" Type="Self.Stencil" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Channels">
+        <PropertyRef Name="idCh" />
+      </Principal>
+      <Dependent Role="Stencil">
+        <PropertyRef Name="idCh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Television_Shows">
+    <End Role="Shows" Type="Self.Shows" Multiplicity="1" />
+    <End Role="Television" Type="Self.Television" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Shows">
+        <PropertyRef Name="idSh" />
+      </Principal>
+      <Dependent Role="Television">
+        <PropertyRef Name="idSh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Television_Stencil">
+    <End Role="Stencil" Type="Self.Stencil" Multiplicity="1" />
+    <End Role="Television" Type="Self.Television" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stencil">
+        <PropertyRef Name="idSt" />
+      </Principal>
+      <Dependent Role="Television">
+        <PropertyRef Name="idSt" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Roles">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="idRol" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="idRol" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="TVshowsModelStoreContainer">
+    <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Channels" EntityType="Self.Channels" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Favorites" EntityType="Self.Favorites" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Shows" EntityType="Self.Shows" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Stencil" EntityType="Self.Stencil" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Television" EntityType="Self.Television" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Favorites_Categories" Association="Self.FK_Favorites_Categories">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Favorites" EntitySet="Favorites" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Favorites_Shows" Association="Self.FK_Favorites_Shows">
+      <End Role="Shows" EntitySet="Shows" />
+      <End Role="Favorites" EntitySet="Favorites" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Favorites_Users" Association="Self.FK_Favorites_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Favorites" EntitySet="Favorites" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Shows_Categories" Association="Self.FK_Shows_Categories">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Shows" EntitySet="Shows" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Stencil_Categories" Association="Self.FK_Stencil_Categories">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Stencil" EntitySet="Stencil" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Stencil_Channels" Association="Self.FK_Stencil_Channels">
+      <End Role="Channels" EntitySet="Channels" />
+      <End Role="Stencil" EntitySet="Stencil" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Television_Shows" Association="Self.FK_Television_Shows">
+      <End Role="Shows" EntitySet="Shows" />
+      <End Role="Television" EntitySet="Television" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Television_Stencil" Association="Self.FK_Television_Stencil">
+      <End Role="Stencil" EntitySet="Stencil" />
+      <End Role="Television" EntitySet="Television" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

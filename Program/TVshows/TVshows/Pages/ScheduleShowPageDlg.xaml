@@ -1,0 +1,81 @@
+﻿<Page x:Class="TVshows.Pages.ScheduleShowPageDlg"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TVshows.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="520" d:DesignWidth="250"
+      Title="ScheduleShowPageDlg" Background="#3A5154">
+
+    <Grid>
+        <DockPanel HorizontalAlignment="Center"
+                   ScrollViewer.VerticalScrollBarVisibility="Disabled">
+            <Label x:Name="CaptionLabel"
+                   Content="ДОБАВИТЬ"
+                   FontFamily="Inter"
+                   FontWeight="Bold"
+                   FontSize="16"
+                   Foreground="#B9B0B2"
+                   Margin="0 10 0 0"
+                   DockPanel.Dock="Top"
+                   HorizontalAlignment="Center"/>
+
+            <Label Content="Передача"
+                   FontFamily="Inter"
+                   FontSize="18"
+                   Foreground="#929AA2"
+                   Margin="0 5 0 0"
+                   DockPanel.Dock="Top"
+                   HorizontalAlignment="Center"/>
+            <ComboBox x:Name="CategShowComboBox"
+                      Margin="20 0"
+                      Height="25"
+                      SelectionChanged="CategShowComboBox_SelectionChanged"
+                      DockPanel.Dock="Top"/>
+
+            <StackPanel x:Name="SelTimeStackPanel"
+                        Visibility="Visible"
+                        DockPanel.Dock="Top">
+            <Label Content="Время начала"
+                   FontFamily="Inter"
+                   FontSize="18"
+                   Foreground="#929AA2"
+                   Margin="0 5 0 0"
+                   HorizontalAlignment="Center"/>
+            <ComboBox x:Name="TimeShowComboBox"
+                      Margin="20 0"
+                      Height="25"/>
+            </StackPanel>
+            <Label/>
+
+            <StackPanel VerticalAlignment="Bottom"
+                        HorizontalAlignment="Center"
+                        Orientation="Horizontal">
+
+                <Button x:Name="OkButton"
+                        Content="Ок"
+                        Height="35"
+                        Width="92"
+                        FontFamily="Inter"
+                        FontWeight="Bold"
+                        FontSize="16"
+                        Margin="20 0 27 10"
+                        Background="#929AA2"
+                        Click="OkButton_Click"/>
+                <Button x:Name="CancelButton"
+                        Content="Отмена"
+                        Height="35"
+                        Width="92"
+                        FontFamily="Inter"
+                        FontWeight="Bold"
+                        FontSize="16"
+                        Margin="0 0 20 10"
+                        Background="#929AA2"
+                        Click="CancelButton_Click"/>
+
+            </StackPanel>
+
+        </DockPanel>
+    </Grid>
+</Page>

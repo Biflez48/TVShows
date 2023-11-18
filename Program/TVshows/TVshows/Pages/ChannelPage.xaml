@@ -14,14 +14,13 @@
                     BorderBrush="#3A5154"
                     BorderThickness="2"
                     Margin="10"
-                    Width="275"
-                    Height="80"
-                    Padding="10">
+                    Width="280">
 
                 <DockPanel Background="#929AA2">
                     <Border CornerRadius="5"
                             BorderBrush="#3A5154"
-                            BorderThickness="2">
+                            BorderThickness="2"
+                            Padding="10">
                         
                         <Label x:Name="ImageLike"
                                Width="60"
@@ -32,11 +31,14 @@
                     </Border>
                     <StackPanel DockPanel.Dock="Right"
                                 Margin="5 0 0 0">
-                        <Label Content="{Binding NameCh}"
+                        <TextBlock Text="{Binding NameCh}"
                                    FontWeight="Bold"
+                                   TextWrapping="Wrap"
+                               FontSize="18"
                                    HorizontalAlignment="Left"/>
                         <TextBlock Text="{Binding DescriptionCh}"
                                    TextWrapping="Wrap"
+                                   FontSize="16"
                                    HorizontalAlignment="Left"
                                    Margin="0 5 0 0"/>
                     </StackPanel>
@@ -72,6 +74,7 @@
                     FontFamily="Inter"
                     DockPanel.Dock="Right"
                     FontWeight="Bold"
+                    Visibility="Visible"
                     Click="DeleteChannelButton_Click"/>
             <Button x:Name="AddChannelButton"
                     Content="Добавить"
@@ -82,6 +85,7 @@
                     FontFamily="Inter"
                     DockPanel.Dock="Right"
                     FontWeight="Bold"
+                    Visibility="Visible"
                     Click="AddChannelButton_Click"/>
             <Label DockPanel.Dock="Right"/>
             
@@ -96,6 +100,7 @@
                      ItemTemplate="{StaticResource listTemplate}"
                      ItemsPanel="{StaticResource listPanelTemplate}"
                      MouseDoubleClick="ChnlsListBox_MouseDoubleClick"
+                     Background="#B9B0B2"
                      ScrollViewer.HorizontalScrollBarVisibility="Disabled" />
 
         </StackPanel>

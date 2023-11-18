@@ -9,14 +9,14 @@
       Title="ShowsPage" Background="#3A5154">
 
     <Page.Resources>
+        
         <DataTemplate x:Key="listTemplate">
             <Border CornerRadius="10"
                     BorderBrush="#3A5154"
                     BorderThickness="2"
                     Margin="10"
                     Width="275"
-                    Height="80"
-                    Padding="10">
+                    Height="80">
 
                 <DockPanel Background="#929AA2">
                     <Label Content="{Binding tDurationSh}"
@@ -32,6 +32,10 @@
                                    HorizontalAlignment="Left"
                                    Margin="0 5 0 0"/>
                     </StackPanel>
+                    <local:HeartCheckBox IsChecked="{Binding AddFavorite}"
+                                         MouseLeftButtonUp="HeartCheckBox_MouseLeftButtonUp"
+                                 Width="45"
+                                 Height="45"/>
                     <Label Content="{Binding Path=Categories.NameCat}"
                            FontWeight="Bold"
                            DockPanel.Dock="Right"/>
@@ -93,6 +97,7 @@
                     Grid.Row="1"
                     Background="#B9B0B2">
             <ListBox x:Name="ShowListBox"
+                     Background="#B9B0B2"
                      ItemTemplate="{StaticResource listTemplate}"
                      ItemsPanel="{StaticResource listPanelTemplate}"
                      ScrollViewer.HorizontalScrollBarVisibility="Disabled" />

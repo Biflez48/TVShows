@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\AlexBook\Downloads\TVshows-20231110T175149Z-001\TVshows\TVshows\obj\Debug\
+C:\Users\AlexBook\Downloads\TVshows-20231113T193131Z-001\TVshows\TVshows\obj\Debug\
 TVshows
 none
 false
 DEBUG;TRACE
-C:\Users\AlexBook\Downloads\TVshows-20231110T175149Z-001\TVshows\TVshows\App.xaml
-101345253484
-2-857585327
-301245408552
-182114877677
-LoginWindow.xaml;MainWindow.xaml;Pages\CategoriesPage.xaml;Pages\ChannelPage.xaml;Pages\ChannelPageDlg.xaml;Pages\NotifyPage.xaml;Pages\SchedulePage.xaml;Pages\ShowsPage.xaml;Pages\ShowsPageDls.xaml;RegistrationWindow.xaml;
+C:\Users\AlexBook\Downloads\TVshows-20231113T193131Z-001\TVshows\TVshows\App.xaml
+13-581096296
+2-1995194671
+312109147411
+18487839789
+LoginWindow.xaml;MainWindow.xaml;Pages\CategoriesPage.xaml;Pages\ChannelPage.xaml;Pages\ChannelPageDlg.xaml;Pages\HeartCheckBox.xaml;Pages\NotifyPage.xaml;Pages\SchedulePage.xaml;Pages\SchedulePageDlg.xaml;Pages\ScheduleShowPageDlg.xaml;Pages\ShowsPage.xaml;Pages\ShowsPageDls.xaml;RegistrationWindow.xaml;
 
-True
+False
 

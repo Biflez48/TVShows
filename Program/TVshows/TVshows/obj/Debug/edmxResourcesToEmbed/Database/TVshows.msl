@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище TVshowsModelContainer" CdmEntityContainer="TVshowsEntities">
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="TVshowsModel.Categories">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="idCat" ColumnName="idCat" />
+          <ScalarProperty Name="NameCat" ColumnName="NameCat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Channels">
+      <EntityTypeMapping TypeName="TVshowsModel.Channels">
+        <MappingFragment StoreEntitySet="Channels">
+          <ScalarProperty Name="idCh" ColumnName="idCh" />
+          <ScalarProperty Name="NameCh" ColumnName="NameCh" />
+          <ScalarProperty Name="DescriptionCh" ColumnName="DescriptionCh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DaysOfWeek">
+      <EntityTypeMapping TypeName="TVshowsModel.DaysOfWeek">
+        <MappingFragment StoreEntitySet="DaysOfWeek">
+          <ScalarProperty Name="idDayOfWeek" ColumnName="idDayOfWeek" />
+          <ScalarProperty Name="NameDayOfWeek" ColumnName="NameDayOfWeek" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Favorites">
+      <EntityTypeMapping TypeName="TVshowsModel.Favorites">
+        <MappingFragment StoreEntitySet="Favorites">
+          <ScalarProperty Name="idFav" ColumnName="idFav" />
+          <ScalarProperty Name="idUs" ColumnName="idUs" />
+          <ScalarProperty Name="idSh" ColumnName="idSh" />
+          <ScalarProperty Name="dtNotifyRefresh" ColumnName="dtNotifyRefresh" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="TVshowsModel.Roles">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
+          <ScalarProperty Name="NameRol" ColumnName="NameRol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Shows">
+      <EntityTypeMapping TypeName="TVshowsModel.Shows">
+        <MappingFragment StoreEntitySet="Shows">
+          <ScalarProperty Name="idSh" ColumnName="idSh" />
+          <ScalarProperty Name="NameSh" ColumnName="NameSh" />
+          <ScalarProperty Name="tDurationSh" ColumnName="tDurationSh" />
+          <ScalarProperty Name="DescrioptionSh" ColumnName="DescrioptionSh" />
+          <ScalarProperty Name="idCat" ColumnName="idCat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stencil">
+      <EntityTypeMapping TypeName="TVshowsModel.Stencil">
+        <MappingFragment StoreEntitySet="Stencil">
+          <ScalarProperty Name="idSt" ColumnName="idSt" />
+          <ScalarProperty Name="idCh" ColumnName="idCh" />
+          <ScalarProperty Name="idCat" ColumnName="idCat" />
+          <ScalarProperty Name="idDayOfWeek" ColumnName="idDayOfWeek" />
+          <ScalarProperty Name="tStart" ColumnName="tStart" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Television">
+      <EntityTypeMapping TypeName="TVshowsModel.Television">
+        <MappingFragment StoreEntitySet="Television">
+          <ScalarProperty Name="idTv" ColumnName="idTv" />
+          <ScalarProperty Name="idSh" ColumnName="idSh" />
+          <ScalarProperty Name="idSt" ColumnName="idSt" />
+          <ScalarProperty Name="dStart" ColumnName="dStart" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="TVshowsModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="idUs" ColumnName="idUs" />
+          <ScalarProperty Name="NameUs" ColumnName="NameUs" />
+          <ScalarProperty Name="idRol" ColumnName="idRol" />
+          <ScalarProperty Name="PasswordUs" ColumnName="PasswordUs" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

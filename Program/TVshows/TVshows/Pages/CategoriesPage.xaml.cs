@@ -23,18 +23,28 @@ namespace TVshows.Pages
     {
         private Database.Categories Category { get; set; }
         private CollectionViewSource CategViewModel { get; set; }
-        public CategoriesPage()
+        public CategoriesPage(MainWindow.LogUser logUser)
         {
             InitializeComponent();
-            ResetDate();
+            CategViewModel = new CollectionViewSource();
+            NewNameDockPanel.Visibility = Visibility.Hidden;
+            if (logUser.idRol == 1)
+            {
+                DeleteCategButton.Visibility = Visibility.Visible;
+                AddCategButton.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                DeleteCategButton.Visibility = Visibility.Hidden;
+                AddCategButton.Visibility = Visibility.Hidden;
+            }
             UpdateCategTiles(null);
         }
 
-        private void ResetDate()
+        private void ResetData()
         {
-            this.Category = new Database.Categories();
-            this.Category.idCat = Core.VOID;
-            CategViewModel = new CollectionViewSource();
+            Category = new Database.Categories();
+            Category.idCat = Core.VOID;
         }
 
         public void UpdateCategTiles(Database.Categories Category)
@@ -113,10 +123,10 @@ namespace TVshows.Pages
             {
                 if (Category.idCat == Core.VOID)
                 {
+                    Category.NameCat = NewNameTextBox.Text;
                     Core.Database.Categories.Add(Category);
                 }
                 Core.Database.SaveChanges();
-                ResetDate();
             }
             catch
             {
@@ -133,6 +143,7 @@ namespace TVshows.Pages
 
         private void AddCategoryButton_Click(object sender, RoutedEventArgs e)
         {
+            ResetData();
             NewNameDockPanel.Visibility = Visibility.Visible;
         }
 
@@ -164,11 +175,12 @@ namespace TVshows.Pages
             {
                 try
                 {
-                    if (Category.idCat == Core.VOID)
+                    if (Category.idCat != Core.VOID)
                     {
                         Core.Database.Categories.Remove(Category);
                     }
                     Core.Database.SaveChanges();
+                    UpdateCategTiles(Category);
                 }
                 catch
                 {

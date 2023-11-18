@@ -22,10 +22,25 @@ namespace TVshows.Pages
     /// </summary>
     public partial class ChannelPage : Page
     {
+        private MainWindow.LogUser logUser;
+        private MainWindow wnd;
         private CollectionViewSource ChannelsViewModel { get; set; }
-        public ChannelPage()
+        public ChannelPage(MainWindow.LogUser logUser,MainWindow wnd)
         {
             InitializeComponent();
+            this.wnd = wnd;
+            this.logUser = new MainWindow.LogUser();
+            this.logUser = logUser;
+            if (this.logUser.idRol == 1)
+            {
+                AddChannelButton.Visibility = Visibility.Visible;
+                DeleteChannelButton.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                AddChannelButton.Visibility = Visibility.Hidden;
+                DeleteChannelButton.Visibility = Visibility.Hidden;
+            }
             ChannelsViewModel = new CollectionViewSource();
             UpdateChannelTiles(null);
         }
@@ -79,7 +94,7 @@ namespace TVshows.Pages
         private void ChnlsListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Database.Channels SelItem = (Database.Channels)ChnlsListBox.SelectedItem;
-            (new MainWindow()).RootFrame.Navigate(new SchedulePage(SelItem.idCh));
+            wnd.RootFrame.Navigate(new SchedulePage(logUser,SelItem.idCh));
         }
 
         private void AddChannelButton_Click(object sender, RoutedEventArgs e)
@@ -94,7 +109,7 @@ namespace TVshows.Pages
             {
                 try
                 {
-                    if (Channel.idCh == Core.VOID)
+                    if (Channel.idCh != Core.VOID)
                     {
                         Core.Database.Channels.Remove(Channel);
                     }

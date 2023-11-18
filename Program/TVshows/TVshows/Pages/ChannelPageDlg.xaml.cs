@@ -80,6 +80,8 @@ namespace TVshows.Pages
             {
                 if (Channel.idCh == Core.VOID)
                 {
+                    Channel.NameCh = NameChannelTextBox.Text;
+                    Channel.DescriptionCh = DescrTextBox.Text;
                     Core.Database.Channels.Add(Channel);
                 }
                 Core.Database.SaveChanges();

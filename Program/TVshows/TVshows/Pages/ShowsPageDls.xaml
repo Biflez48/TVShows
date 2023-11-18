@@ -9,7 +9,7 @@
       Title="ShowsPageDls" Background="#3A5154">
 
     <Grid>
-        <DockPanel >
+        <DockPanel ScrollViewer.VerticalScrollBarVisibility="Disabled">
 
             <Label x:Name="CaptionLabel"
                    Content="ДОБАВИТЬ / ИЗМЕНИТЬ"

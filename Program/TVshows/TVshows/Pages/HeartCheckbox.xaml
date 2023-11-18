@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="TVshows.Pages.HeartCheckBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TVshows.Pages"
+             mc:Ignorable="d" 
+             d:DesignHeight="45" d:DesignWidth="45">
+    <Grid>
+        <Path x:Name="heartPath" Stroke="Black" MouseLeftButtonUp="heartPath_MouseLeftButtonUp"
+              Data="M 22.5 5.2
+              C 15.6 -2.6 0 -1.2 0 12.1
+              c 0 12.1 10.9 19 22.5 31.2 10.9 -12.1 22.5 -21.3 22.5 -31.2
+              C 45 -1.2 29.4 -2.6 22.5 5.2"/>
+    </Grid>
+</UserControl>
+<!-- 
+    260x260
+    
+    Data="M 130 30
+              C 90 -15 0 -7 0 70
+              c 0 70 63 110 130 180 63 -70 130 -123 130 -180
+              C 260 -7 170 -15 130 30"
+    
+    -->

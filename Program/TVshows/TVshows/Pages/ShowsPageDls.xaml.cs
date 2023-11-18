@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
@@ -14,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TVshows.Database;
 
 namespace TVshows.Pages
 {
@@ -22,34 +24,40 @@ namespace TVshows.Pages
     /// </summary>
     public partial class ShowsPageDls : Page
     {
-        private Database.Shows Show { get; set; }
-        private List<Database.Categories> Categories { get; set; }
+        private Database.Shows Show;
         private Page Page;
-        public ShowsPageDls(Page Page, Database.Shows Show)
+        public ShowsPageDls(Page Page, int? ShowId)
+        
         {
             InitializeComponent();
             this.Page = Page;
-            if(Show == null)
+
+            if (ShowId == null)
             {
                 CaptionLabel.Content = "Добавление";
-                this.Show = new Database.Shows();
-                this.Show.idSh = Core.VOID;
-                this.Show.idCat = Core.NONE;
+                Show = new Database.Shows();
+                Show.idSh = Core.VOID;
+                Show.idCat = Core.NONE;
             }
             else
             {
                 CaptionLabel.Content = "Редактирование";
-                this.Show = Show;
+                Show = new ObservableCollection<Database.Shows>(Core.Database.Shows.Where(S => S.idSh == ShowId))[0];
             }
             LoadData();
         }
         private void LoadData()
         {
-            Categories = new List<Database.Categories>(Core.Database.Categories.OrderBy(C => C.NameCat));
-            CategShowComboBox.ItemsSource = Categories;
-            if (Categories.Count > 0)
+            ObservableCollection<Database.Categories> Categ = new ObservableCollection<Database.Categories>(Core.Database.Categories.OrderBy(C => C.NameCat));
+            List<string> CategNames = new List<string>();
+            for(int i=0; i < Categ.Count; i++)
             {
-                CategShowComboBox.SelectedItem = Core.Database.Categories.FirstOrDefault(C => C.idCat == Show.idCat);
+                CategNames.Add(Categ[i].NameCat);
+            }
+            CategShowComboBox.ItemsSource = CategNames;
+            if (Categ.Count > 0)
+            {
+                CategShowComboBox.SelectedItem = CategNames[0];
             }
             for (int i = 0; i < 24; i++)
             {
@@ -63,6 +71,27 @@ namespace TVshows.Pages
             }
             MDurationShowComboBox.SelectedItem = 0;
             SDurationShowComboBox.SelectedItem = 0;
+
+            if (Show.idSh != Core.VOID)
+            {
+                NameShowTextBox.Text = Show.NameSh;
+                HDurationShowComboBox.SelectedItem = Show.tDurationSh.Hours;
+                MDurationShowComboBox.SelectedItem = Show.tDurationSh.Minutes;
+                SDurationShowComboBox.SelectedItem = Show.tDurationSh.Seconds;
+
+                int num = 0;
+                for(int i = 0; i < CategNames.Count; i++)
+                {
+                    if(CategNames[i] == new ObservableCollection<Database.Categories>(Core.Database.Categories.Where( C => C.idCat == Show.idCat))[0].NameCat)
+                    {
+                        num = i;
+                        break;
+                    }
+                }
+
+                CategShowComboBox.SelectedItem = CategNames[num];
+                DescrTextBox.Text = Show.DescrioptionSh;
+            }
         }
         private bool CheckInfo()
         {
@@ -95,7 +124,8 @@ namespace TVshows.Pages
                 (int)SDurationShowComboBox.SelectedItem
             );
 
-            int idCat = (CategShowComboBox.SelectedItem as Database.Categories).idCat;
+            string SelectedNameCateg = CategShowComboBox.SelectedItem.ToString();
+            int idCat = (new ObservableCollection<Database.Categories>(Core.Database.Categories.Where(C => C.NameCat == SelectedNameCateg)))[0].idCat;
 
             Func<Database.Shows, bool> Predicate;
             if (Show.idSh == Core.VOID)
@@ -114,11 +144,12 @@ namespace TVshows.Pages
                 && S.idSh != Show.idSh;
             }
 
-            int Count = Core.Database.Shows.Where(S =>
+            ObservableCollection<Database.Shows> show = new ObservableCollection<Database.Shows>(
+                Core.Database.Shows.Where(S =>
                 S.NameSh.ToLower() == NameSh
                 && S.tDurationSh == tDurationSh
-                && S.idCat == idCat).Count();
-            if (Count > 0)
+                && S.idCat == idCat));
+            if (show.Count > 0 && show[0].idSh!=Show.idSh)
             {
                 MessageBox.Show("Такая передача уже есть",
                                 "Предупреждение",
@@ -135,6 +166,18 @@ namespace TVshows.Pages
         {
             try
             {
+                Show.NameSh = NameShowTextBox.Text;
+                Show.tDurationSh = new TimeSpan(
+                    (int)HDurationShowComboBox.SelectedItem,
+                    (int)MDurationShowComboBox.SelectedItem,
+                    (int)SDurationShowComboBox.SelectedItem
+                );
+                Show.DescrioptionSh = DescrTextBox.Text;
+                string SelectedNameCateg = CategShowComboBox.SelectedItem.ToString();
+                ObservableCollection<Database.Categories> Categs = new ObservableCollection<Database.Categories>(
+                    Core.Database.Categories.Where(C => C.NameCat == SelectedNameCateg)
+                    );
+                Show.idCat = Categs[0].idCat;
                 if (Show.idSh == Core.VOID)
                 {
                     Core.Database.Shows.Add(Show);
@@ -161,7 +204,7 @@ namespace TVshows.Pages
                 ShowsPage.HideDialog();
                 if (NeedUpdate)
                 {
-                    ShowsPage.UpdateShowTiles(Show);
+                    ShowsPage.UpdateShowTiles();
                 }
                 else
                 {

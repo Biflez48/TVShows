@@ -15,8 +15,7 @@
                     BorderThickness="2"
                     Margin="10"
                     Width="275"
-                    Height="80"
-                    Padding="10">
+                    Height="80">
 
                 <DockPanel Background="#929AA2">
                     <Border CornerRadius="5"
@@ -62,7 +61,7 @@
             <DockPanel x:Name="NewNameDockPanel"
                        Height="36"
                        Margin="20 0"
-                       Visibility="Hidden">
+                       Visibility="Visible">
                 <TextBox x:Name="NewNameTextBox"
                          Background="#D9D9D9"
                          Width="200"/>
@@ -92,6 +91,7 @@
                     FontFamily="Inter"
                     DockPanel.Dock="Right"
                     FontWeight="Bold"
+                    Visibility="Visible"
                     Click="DeleteCategoryButton_Click"/>
             <Button x:Name="AddCategButton"
                     Content="Добавить"
@@ -102,6 +102,7 @@
                     FontFamily="Inter"
                     DockPanel.Dock="Right"
                     FontWeight="Bold"
+                    Visibility="Visible"
                     Click="AddCategoryButton_Click"/>
             <Label DockPanel.Dock="Right"/>
 
@@ -115,7 +116,9 @@
             <ListBox x:Name="CategListBox"
                      ItemTemplate="{StaticResource listTemplate}"
                      ItemsPanel="{StaticResource listPanelTemplate}"
-                     ScrollViewer.HorizontalScrollBarVisibility="Disabled" />
+                     Background="#B9B0B2"
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                     ScrollViewer.VerticalScrollBarVisibility="Auto"/>
 
         </StackPanel>
         <GridSplitter x:Name="DialogGridSplitter"
