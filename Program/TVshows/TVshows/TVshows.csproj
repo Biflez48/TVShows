@@ -66,52 +66,46 @@
     </ApplicationDefinition>
     <Compile Include="Core.cs" />
     <Compile Include="Database\Categories.cs">
-      <DependentUpon>TVShows.tt</DependentUpon>
+      <DependentUpon>TVshows.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\Channels.cs">
-      <DependentUpon>TVShows.tt</DependentUpon>
+      <DependentUpon>TVshows.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\DaysOfWeek.cs">
+      <DependentUpon>TVshows.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\Favorites.cs">
-      <DependentUpon>TVShows.tt</DependentUpon>
+      <DependentUpon>TVshows.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\Roles.cs">
-      <DependentUpon>TVShows.tt</DependentUpon>
+      <DependentUpon>TVshows.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\Shows.cs">
-      <DependentUpon>TVShows.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>TVShows.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\sp_helpdiagrams_Result.cs">
-      <DependentUpon>TVShows.tt</DependentUpon>
+      <DependentUpon>TVshows.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\Stencil.cs">
-      <DependentUpon>TVShows.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\sysdiagrams.cs">
-      <DependentUpon>TVShows.tt</DependentUpon>
+      <DependentUpon>TVshows.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\Television.cs">
-      <DependentUpon>TVShows.tt</DependentUpon>
+      <DependentUpon>TVshows.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\TVShows.Context.cs">
+    <Compile Include="Database\TVshows.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TVShows.Context.tt</DependentUpon>
+      <DependentUpon>TVshows.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\TVShows.cs">
+    <Compile Include="Database\TVshows.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TVShows.tt</DependentUpon>
+      <DependentUpon>TVshows.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\TVShows.Designer.cs">
+    <Compile Include="Database\TVshows.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>TVShows.edmx</DependentUpon>
+      <DependentUpon>TVshows.edmx</DependentUpon>
     </Compile>
     <Compile Include="Database\Users.cs">
-      <DependentUpon>TVShows.tt</DependentUpon>
+      <DependentUpon>TVshows.tt</DependentUpon>
     </Compile>
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
@@ -122,14 +116,21 @@
     <Compile Include="Pages\ChannelPage.xaml.cs">
       <DependentUpon>ChannelPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ChannelPageDlg.xaml.cs">
-      <DependentUpon>ChannelPageDlg.xaml</DependentUpon>
+    <Compile Include="Pages\ChannelPageDlg.xaml.cs" />
+    <Compile Include="Pages\HeartCheckBox.xaml.cs">
+      <DependentUpon>HeartCheckBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\NotifyPage.xaml.cs">
       <DependentUpon>NotifyPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\SchedulePage.xaml.cs">
       <DependentUpon>SchedulePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SchedulePageDlg.xaml.cs">
+      <DependentUpon>SchedulePageDlg.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ScheduleShowPageDlg.xaml.cs">
+      <DependentUpon>ScheduleShowPageDlg.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ShowsPage.xaml.cs">
       <DependentUpon>ShowsPage.xaml</DependentUpon>
@@ -165,6 +166,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ChannelPageDlg.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\HeartCheckBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -173,6 +178,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\SchedulePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SchedulePageDlg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ScheduleShowPageDlg.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -207,12 +220,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Database\TVShows.edmx">
+    <EntityDeploy Include="Database\TVshows.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TVShows.Designer.cs</LastGenOutput>
+      <LastGenOutput>TVshows.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Database\TVShows.edmx.diagram">
-      <DependentUpon>TVShows.edmx</DependentUpon>
+    <None Include="Database\TVshows.edmx.diagram">
+      <DependentUpon>TVshows.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -226,17 +239,25 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\UI\tv.ico" />
+    <Resource Include="Img\ImgChannels\1channel.png" />
+    <Resource Include="Img\ImgChannels\Disney.png" />
+    <Resource Include="Img\ImgChannels\Ohotnik_i_Rybolov.png" />
+    <Resource Include="Img\ImgChannels\STS.png" />
+    <Resource Include="Img\ImgChannels\TV_Nauka.jpg" />
+  </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Database\TVShows.Context.tt">
+    <Content Include="Database\TVshows.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TVShows.edmx</DependentUpon>
-      <LastGenOutput>TVShows.Context.cs</LastGenOutput>
+      <DependentUpon>TVshows.edmx</DependentUpon>
+      <LastGenOutput>TVshows.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Database\TVShows.tt">
+    <Content Include="Database\TVshows.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TVShows.edmx</DependentUpon>
-      <LastGenOutput>TVShows.cs</LastGenOutput>
+      <DependentUpon>TVshows.edmx</DependentUpon>
+      <LastGenOutput>TVshows.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

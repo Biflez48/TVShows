@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TVshows"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="350" Width="280" WindowStartupLocation="CenterScreen">
+        Title="LoginWindow"
+        Height="350" Width="285"
+        MinWidth="275" MinHeight="315"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <DockPanel Background="#B9B0B2">
-
             <StackPanel DockPanel.Dock="Top">
-
-                <Label x:Name="TitleLogLabel"
+            <Label x:Name="TitleLogLabel"
                        FontSize="16" 
                        FontFamily="Inter"
                        FontWeight="Bold" 
@@ -20,17 +21,20 @@
                        VerticalContentAlignment="Center" 
                        Background="#929AA2">
 
-                    <Label.Content>
-                        <TextBlock TextWrapping="Wrap">ВХОД</TextBlock>
-                    </Label.Content>
+                <Label.Content>
+                    <TextBlock TextWrapping="Wrap">ВХОД</TextBlock>
+                </Label.Content>
 
-                </Label>
+            </Label>
+
+            <StackPanel MaxWidth="350">
 
                 <StackPanel Margin="20 20 20 10">
                     <Label Content="Логин"
                            FontFamily="Inter"
                            FontSize="18"/>
                     <TextBox x:Name="LoginLogTextBox"
+                             Text="admin"
                              TabIndex="0"
                                  FontSize="20"
                                  FontStyle="Italic" 
@@ -41,16 +45,19 @@
                     <Label Content="Пароль"
                            FontFamily="Inter"
                            FontSize="18"/>
-                    <TextBox x:Name="PasswordLogTextBox"
+                        <TextBox x:Name="PasswordLogTextBox"
+                             Text="admin"
                              TabIndex="0"
                                  FontSize="20"
                                  FontStyle="Italic" 
                              Height="33"/>
                 </StackPanel>
 
+                </StackPanel>
             </StackPanel>
             <DockPanel DockPanel.Dock="Bottom"
-                       Margin="20 10">
+                       Margin="20 10"
+                       MaxWidth="350">
 
                 <Button x:Name="OkLogBtn" 
                         DockPanel.Dock="Left"
@@ -72,10 +79,10 @@
                         FontFamily="Inter"
                         FontWeight="Bold"
                         Click="RehLogBtn_Click"/>
-                <Label></Label>
+                <Label/>
 
             </DockPanel>
-
+            <Label/>
         </DockPanel>
     </Grid>
 </Window>

@@ -22,11 +22,13 @@ namespace TVshows.Database
     
         public int idSt { get; set; }
         public int idCh { get; set; }
-        public int idCat { get; set; }
-        public System.DateTime dtStart { get; set; }
+        public Nullable<int> idCat { get; set; }
+        public int idDayOfWeek { get; set; }
+        public System.TimeSpan tStart { get; set; }
     
         public virtual Categories Categories { get; set; }
         public virtual Channels Channels { get; set; }
+        public virtual DaysOfWeek DaysOfWeek { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Television> Television { get; set; }
     }

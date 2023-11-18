@@ -35,7 +35,7 @@ namespace TVshows
 
             if (User.Count()>0)
             {
-                MainWindow mWnd = new MainWindow(User[0].NameUs);
+                MainWindow mWnd = new MainWindow(User[0].idUs);
                 mWnd.Show();
                 Close();
             }

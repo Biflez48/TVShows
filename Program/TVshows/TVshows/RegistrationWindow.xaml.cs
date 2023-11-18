@@ -98,6 +98,7 @@ namespace TVshows
                     MessageBoxButton.OK,
                     MessageBoxImage.Warning,
                     MessageBoxResult.OK);
+                CreateCaptcha();
                 RepCaptchaRegTextBox.Focus();
                 return false;
             }

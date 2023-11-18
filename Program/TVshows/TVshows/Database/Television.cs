@@ -17,6 +17,7 @@ namespace TVshows.Database
         public int idTv { get; set; }
         public int idSh { get; set; }
         public int idSt { get; set; }
+        public System.DateTime dStart { get; set; }
     
         public virtual Shows Shows { get; set; }
         public virtual Stencil Stencil { get; set; }

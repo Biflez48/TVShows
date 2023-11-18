@@ -12,25 +12,18 @@ namespace TVshows.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class Shows
+    public partial class DaysOfWeek
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Shows()
+        public DaysOfWeek()
         {
-            this.Favorites = new HashSet<Favorites>();
-            this.Television = new HashSet<Television>();
+            this.Stencil = new HashSet<Stencil>();
         }
     
-        public int idSh { get; set; }
-        public string NameSh { get; set; }
-        public System.TimeSpan tDurationSh { get; set; }
-        public string DescrioptionSh { get; set; }
-        public Nullable<int> idCat { get; set; }
+        public int idDayOfWeek { get; set; }
+        public string NameDayOfWeek { get; set; }
     
-        public virtual Categories Categories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Favorites> Favorites { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Television> Television { get; set; }
+        public virtual ICollection<Stencil> Stencil { get; set; }
     }
 }
